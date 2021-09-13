@@ -28,7 +28,7 @@ module ApplicationHelper
   def incoming_friendships
     current_user.friendships.each do |a|
       if a.confirmed == false && current_user.id = a.user_id
-      true
+        true
       end
     end
   end
