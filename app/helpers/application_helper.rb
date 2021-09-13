@@ -19,10 +19,9 @@ module ApplicationHelper
   def pending_friendships
     start = false
     Friendship.all.each do |a|
-      if ((a.confirmed == false) && (current_user.id == a.user_id))
+      if a.confirmed == false && current_user.id == a.user_id
         start = true
       end
-      start
     end
   end
 
