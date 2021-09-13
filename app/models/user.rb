@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships, dependent: :destroy
-  has_many :friends, ->{ merge(Friendship.confirmed_friendship) }, through: :friendships
+  has_many :friends, -> { merge(Friendship.confirmed_friendship) }, through: :friendships
 
   def add_friend(another_user)
     friends << another_user
