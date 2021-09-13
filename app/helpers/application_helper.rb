@@ -28,7 +28,7 @@ module ApplicationHelper
 
   def incoming_friendships
     current_user.friendships.each do |a|
-      if ((a.confirmed == false) && (current_user.id = a.user_id))
+      if a.confirmed == false && current_user.id = a.user_id
       true
       end
     end
@@ -37,7 +37,7 @@ module ApplicationHelper
   def already_sent_request_or_friends(current_user)
     a = Friendship.where('confirmed =?', false).pluck(:friend_id, :user_id).flatten
     b = Friendship.where('confirmed =?', true).pluck(:friend_id, :user_id).flatten
-    if a.include?(current_user.id) || a.include?(current_user.id)
+    if a.include?(current_user.id) || b.include?(current_user.id)
       true
     else
       false
