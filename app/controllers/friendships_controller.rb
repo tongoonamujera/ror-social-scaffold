@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: %i[show edit update destroy]
+  before_action :set_friendship, only: %i[show edit destroy]
 
   # GET /friendships or /friendships.json
   def index
@@ -27,8 +27,8 @@ class FriendshipsController < ApplicationController
 
     respond_to do |format|
       if @friendship.save
-        format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
-        format.json { render :show, status: :created, location: @friendship }
+        format.html { redirect_to friendships_url, notice: 'Friendship was successfully created.' }
+        format.json { render :index, status: :created, location: @friendship }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @friendship.errors, status: :unprocessable_entity }
@@ -38,10 +38,25 @@ class FriendshipsController < ApplicationController
 
   # PATCH/PUT /friendships/1 or /friendships/1.json
   def update
+    @friendship = Friendship.find(params[:id])
     respond_to do |format|
       if @friendship.update(friendship_params)
         format.html { redirect_to @friendship, notice: 'Friendship was successfully updated.' }
         format.json { render :show, status: :ok, location: @friendship }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def confirm_friendship
+    @friendship = Friendship.find(params[:id])
+    @friendship.confirm_friend
+    respond_to do |format|
+      if @friendship.update(friendship_params)
+        format.html { redirect_to friendships_url, notice: 'Friendship was successfully updated.' }
+        format.json { render :index, status: :ok, location: @friendship }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @friendship.errors, status: :unprocessable_entity }

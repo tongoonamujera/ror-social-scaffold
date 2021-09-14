@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   end
 
   resources :friendships do
+    put :confirm_friendship, on: :member
     match '/new', to: 'friendships#create', via: :post, on: :collection
-    match '/delete', to: 'friendships#destroy', via: :delete, on: :collection
+    match '/confirm_friend', to: 'friendships#update', via: :post, on: :collection
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

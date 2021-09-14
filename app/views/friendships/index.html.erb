@@ -63,12 +63,12 @@
                   <%= friendship.user.name.capitalize %>
                 </div>
                 <div class="column is-4">
-                  <%= form_for current_user.friendships.build(friend_id: current_user.id) do |f| %> 
+                  <%= form_for friendship, :url => [:confirm_friendship, friendship], html: { method: :put } do |f| %> 
                     <%= f.text_field :user_id, value: friendship.user.id, type: :hidden %>
                     <%= f.text_field :friend_id, value: current_user.id, type: :hidden %>
                     <%= f.text_field :confirmed, value: true, type: :hidden %>
                     <%= f.submit 'Confirm Friend', class:"button is-info px-5"%>
-                  <% end%>
+                  <% end %>
                 </div>
                 <div class="column is-4">
                   <%= link_to 'Delete request', friendship, method: :delete, data: { confirm: 'Are you sure?' }, class:"button is-danger" %>
@@ -82,14 +82,14 @@
 
     <div class="my-5">
       <h5 class="has-text-centered my-3"><strong>Friends</strong></h5>
-      <% @friendships.confirmed_friendship.each do |friendship| %>
+      <% current_user.friends.each do |friendship| %>
         <div class="box">
           <div class="columns">
             <div class="column is-10">
-              <%= friendship.user.name.capitalize %>
+              <%= friendship.name.capitalize %>
             </div>
             <div class="column is-2">
-              <%= link_to 'Unfriend', friendship, method: :delete, data: { confirm: 'Are you sure?' }, class:"button is-danger" %>
+              <%= link_to 'Show Friend', friendship, class:"button is-danger" %>
             </div>
           </div>
         </div>
