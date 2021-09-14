@@ -17,7 +17,7 @@ RSpec.describe 'User controller', type: :model do
 
     it 'should show user with id 1 name' do
       user = User.find(user1.id).name
-      expect(user).to eq("Tongoona")
+      expect(user).to eq('Tongoona')
     end
 
     it 'should show user with id 1 email' do
