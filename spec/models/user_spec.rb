@@ -1,26 +1,35 @@
+require 'rails_helper'
+
 RSpec.describe User, type: :model do
-  describe 'associations' do
-    it { should have_many(:posts).class_name('Post') }
-    it { should have_many(:comments).class_name('Comment') }
-    it { should have_many(:likes) }
-    it { should have_many(:friendships).class_name('Friendship') }
+  let(:user) { User.create(name: 'rspec', email: 'rspec@test.com', password: '123456') }
+  let(:created_user) { User.create(name: '', email: 'tongoona@test.com', password: '123456789') }
+  let(:posts) { User.reflect_on_association(:posts).macro }
+  let(:comments) { User.reflect_on_association(:comments).macro }
+  let(:likes) { User.reflect_on_association(:likes).macro }
+  let(:friendships) { User.reflect_on_association(:friendships).macro }
+
+  it 'checks user validity' do
+    @user = User.create(name: 'tongoona', email: 'tongoona@test.com', password: '123456789')
+    expect(@user).to be_valid
   end
 
-  describe 'validations' do
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:password) }
+  it 'user name must not be empty' do
+    expect(created_user).to_not be_valid
   end
 
-  describe 'Creating user' do
-    subject { User.create(name: 'tongoona', email: 'tongoona@microverse.org', password: '123456789') }
+  it 'Should check correct association' do
+    expect(posts).to eq(:has_many)
+  end
 
-    it 'it dont return other name than tongoona' do
-      expect(subject.name).to_not eq('Oscar')
-    end
+  it 'should check correct association' do
+    expect(comments).to eq(:has_many)
+  end
 
-    it 'email have email format' do
-      expect(subject.email).to match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/)
-    end
+  it 'should check correct association' do
+    expect(likes).to eq(:has_many)
+  end
+
+  it 'should check correct association' do
+    expect(friendships).to eq(:has_many)
   end
 end
