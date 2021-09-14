@@ -5,7 +5,6 @@
   <%= form.submit 'Save', class: 'btn btn-primary' %>
 <% end %>
 
-<% if current_user.friends_and_own_posts %>
   <article class="timeline">
     <h3>
       Recent posts
@@ -14,4 +13,3 @@
       <%= render @timeline_posts %>
     </ul>
   </article>
-<% end %>
