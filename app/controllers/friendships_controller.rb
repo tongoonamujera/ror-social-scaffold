@@ -74,7 +74,7 @@ class FriendshipsController < ApplicationController
   end
 
   def delete_friendship
-    @friendships = Friendship.where("friend_id =? or user_id =?", current_user.id, current_user.id)
+    @friendships = Friendship.where('friend_id =? or user_id =?', current_user.id, current_user.id)
     @friendships.delete_all
     respond_to do |format|
       format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
