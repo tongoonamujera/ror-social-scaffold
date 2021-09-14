@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :friendships do
     put :confirm_friendship, on: :member
+    delete :delete_friendship, on: :member
     match '/new', to: 'friendships#create', via: :post, on: :collection
     match '/confirm_friend', to: 'friendships#update', via: :post, on: :collection
   end

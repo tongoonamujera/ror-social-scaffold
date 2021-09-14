@@ -73,6 +73,15 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def delete_friendship
+    @friendships = Friendship.where("friend_id =? or user_id =?", current_user.id, current_user.id)
+    @friendships.delete_all
+    respond_to do |format|
+      format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -2,6 +2,12 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
+  def delete_remaining
+    a = Friendship.where("friend_id =?", current_user.id)
+    b = Friendship.where("User_id =?", current_user.id)
+    c = a && b
+    c
+  end
 
 def confirm_friend
   self.update_attributes(confirmed: true)
