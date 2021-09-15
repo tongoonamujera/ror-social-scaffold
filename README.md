@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-[RoR-Social-scaffold](https://redbooks.herokuapp.com/friendships)
+[RoR-Social-scaffold](https://redbooks.herokuapp.com)
 
 
 ## Getting Started
@@ -66,28 +66,26 @@ Open `http://localhost:3000/` in your browser.
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Deployment
-
-TBA
+[RoR-Social-scaffold](https://redbooks.herokuapp.com)
 
 ## Authors
+👤 **Tongoona Mujera**
 
-TBA
+- Github: [@tongoonamujera](https://github.com/tongoonamujera)
+- Twitter: [@tongomujera](https://twitter.com/tongomujera)
+- Linkedin: [tongoona-mujera](https://www.linkedin.com/in/tongoona-mujera-125604162/)
+- Email:  tongoonamujera@gmail.com
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](../../issues/).
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
+Give a ⭐️ if you like this project.!
 
 ## 📝 License
 
-TBA
-
+This project is [MIT](LICENCE) licensed.
