@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+[RoR-Social-scaffold](https://redbooks.herokuapp.com/friendships)
 
 
 ## Getting Started
