@@ -4,9 +4,9 @@
   <div class="column is-4 has-background-grey">
     <div class="my-5">
       <h5 class="has-text-centered my-3"><strong>Suggestions</strong></h5>
-      <% User.all.each do |user|%>
-        <% unless user == current_user %>
-          <% unless already_sent_request_or_friends(current_user) %>
+      <% @users.each do |user| %>
+        <% unless @pending.include?(user.id) %>
+          <% unless @inverted.include?(user.id) %>
             <div class="box">
               <div class="columns">
                 <div class="column is-6">
@@ -31,9 +31,7 @@
   <div class="column is-8 has-background-grey-lighter">
     <div class="my-5">
       <h5 class="has-text-centered my-3"><strong>Pending Friendships</strong></h5>
-      <% @friendships.each do |friendship| %>
-        <% if ((friendship.confirmed == false) && (current_user.id == friendship.user_id)) %>
-          <% unless already_friends(current_user) %>
+      <% current_user.pending_friendships.each do |friendship| %>
             <div class="box">
               <div class="columns">
                 <div class="column is-4">
@@ -47,16 +45,12 @@
                 </div>
               </div>
             </div>
-          <% end %>
-        <% end %>
       <% end %>
     </div>
 
     <div class="my-5">
     <h5 class="has-text-centered my-3"><strong>Incoming Friendships</strong></h5>
-      <% @friendships.each do |friendship| %>
-        <% unless current_user.id == friendship.user_id || friendship.confirmed == true %>
-          <% unless already_friends(current_user) %>
+      <% current_user.inverted_friendships.each do |friendship| %>
             <div class="box">
               <div class="columns">
                 <div class="column is-4">
@@ -75,8 +69,6 @@
                 </div>
               </div>
             </div>
-          <% end %>
-        <% end %>
       <% end %>
     </div>
 
@@ -104,3 +96,4 @@
 
 
 <%= current_user.name %>
+<%= current_user.id %>
