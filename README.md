@@ -11,7 +11,6 @@
 
 [RoR-Social-scaffold](https://redbooks.herokuapp.com)
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -46,7 +45,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
 
-
 ### Usage
 
 Start server with:
@@ -66,9 +64,11 @@ Open `http://localhost:3000/` in your browser.
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Deployment
+
 [RoR-Social-scaffold](https://redbooks.herokuapp.com)
 
 ## Authors
+
 👤 **Tongoona Mujera**
 
 - Github: [@tongoonamujera](https://github.com/tongoonamujera)

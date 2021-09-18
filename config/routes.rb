@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages
   resources :friendships
   root 'posts#index'
 
