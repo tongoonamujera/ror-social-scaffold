@@ -4,6 +4,11 @@ class FriendshipsController < ApplicationController
   # GET /friendships or /friendships.json
   def index
     @friendships = Friendship.all
+    a = current_user.friends.pluck(:friend_id)
+    a << current_user.id
+    @pending = current_user.pending_friendships.pluck(:friend_id)
+    @inverted = current_user.inverted_friendships.pluck(:user_id)
+    @users = User.where.not('id IN (?)', a)
   end
 
   # GET /friendships/1 or /friendships/1.json
