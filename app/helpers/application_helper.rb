@@ -52,4 +52,11 @@ module ApplicationHelper
       false
     end
   end
+
+  def delete_friend(friend)
+    @friendships = Friendship.where('friend_id =? or user_id =? AND user_id =? or friend_id =?', current_user.id, friend.id, current_user.id, friend.id)
+    if delete_friend(friend)
+      @friendships.delete_all
+    end
+  end
 end

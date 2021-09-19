@@ -6,9 +6,9 @@ class FriendshipsController < ApplicationController
     @friendships = Friendship.all
     a = current_user.friends.pluck(:friend_id)
     a << current_user.id
+    @users = User.where.not('id IN (?)', a)
     @pending = current_user.pending_friendships.pluck(:friend_id)
     @inverted = current_user.inverted_friendships.pluck(:user_id)
-    @users = User.where.not('id IN (?)', a)
   end
 
   # GET /friendships/1 or /friendships/1.json
@@ -79,7 +79,8 @@ class FriendshipsController < ApplicationController
   end
 
   def delete_friendship
-    @friendships = Friendship.where('friend_id =? or user_id =?', current_user.id, current_user.id)
+    friendship = params[:friendships]
+    @friendships = Friendship.where('friend_id =? or user_id =? AND user_id =? or friend_id =?', current_user.id, friendship, current_user.id, friendship)
     @friendships.delete_all
     respond_to do |format|
       format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
