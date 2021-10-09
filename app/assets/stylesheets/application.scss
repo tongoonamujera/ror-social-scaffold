@@ -15,3 +15,43 @@
  */
 
 @import 'bulma';
+
+.bod {
+  border: 1px solid rgb(224, 220, 220);
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.bodo {
+  border: 1px solid rgb(224, 220, 220);
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2%;
+}
+
+.inputs {
+  width: 100%;
+  border: 1px solid rgb(224, 220, 220);
+  border-radius: 20px;
+  height: 15vh;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
+  padding: 3%;
+  z-index: -1;
+}
+
+.btnn {
+  position: relative;
+  top: -130% !important;
+  z-index: 1;
+}
+
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';

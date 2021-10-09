@@ -1,9 +1,42 @@
-<section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
-</section>
+<%= link_to "Go Back", messages_path, class:"button is-black mt-5"%>
+  <div class="columns my-5 is-centered">
+    <div class="column is-6 bodo">
+      <h1 class="has-text-centered my-2"><%= @user.name.capitalize %></h1>
+      <% @sender_id = @user.id %>
+      <% @messags = Message.where('sender_id =? AND receiver_id =? or receiver_id =? AND sender_id=?', current_user.id, @sender_id, current_user.id, @sender_id ).order(created_at: :asc) %>
+      <% @messags.each do |message| %>
+        <div class="columns">
+          <% if message.sender_id == current_user.id %>
+            <div class="column">
+              <div class="columns">
+                <div class="column is-6 bod has-background-warning">
+                  <%= message.created_at %><br>
+                  <%= message.body %> <br>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <div class="column has-text-right">
+              <div class="columns">
+                <div class="column is-6"></div>
+                <div class="column is-6 bod">
+                  <%= message.created_at %><br>
+                  <%= message.body %> <br>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <%= form_for @messagess, method: :post do |f| %>
+        <%= f.text_field :sender_id, value: current_user.id, type: :hidden %>
+        <%= f.text_field :receiver_id, value: @sender_id, type: :hidden %>
+        <div class="field">
+            <%= f.text_area :body, class:"inputs", placeholder: "Send Message to this user" %>
+        </div>
+        <div class="has-text-right">
+          <%= f.submit 'Send Message', class:"button is-success btnn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
