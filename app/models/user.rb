@@ -22,4 +22,7 @@ class User < ApplicationRecord
   has_many :friend_requests, through: :inverted_friendships, source: :friend
 
   has_many :friendships, dependent: :destroy
+  has_many :messages, ->{where('sender_id > ? or receiver_id > ?', 0, 0)}
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
+  has_many :recieved_messages, class_name: 'Message', foreign_key: 'receiver_id'
 end

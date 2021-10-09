@@ -1,31 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Messages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th>Sender</th>
-      <th>Receiver</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.body %></td>
-        <td><%= message.sender_id %></td>
-        <td><%= message.receiver_id %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Message', new_message_path %>
+<% content_for :messages do %>
+  <div class="columns is-centered mt-5">
+    <div class="column is-8">
+      <% @users.each do |user| %>
+        <div class="box">
+          <%= link_to user, class:"has-text-dark" do %>
+            <div class="columns">
+              <div class="column has-text-centered is-2">
+                <span><i class="fas fa-user-circle fa-3x"></i></span>
+              </div>
+              <div class="column has-text-centered is-3">
+                <span class="is-size-3"><%= user.name.capitalize %></span>
+              </div>
+              <div class="column has-text-right mt-5 is-6">
+                <i class="is-size-6">(click to send and see messages)</i>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
