@@ -9,7 +9,7 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//require("@fortawesome/fontawesome-free");
+//= require("@fortawesome/fontawesome-free");
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
