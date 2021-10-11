@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>RorSocialScaffold</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,25 +10,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
-      <div class="menu">
-        <div class="menu-item">
-          <%= menu_link_to 'Timeline', posts_path %>
-        </div>
-        <div class="menu-item">
-          <%= link_to 'All users', friendships_path %>
-        </div>
-        <div class="menu-item">
-          <%= link_to 'Messages', messages_path %>
-        </div>
-      </div>
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
-    </nav>
+    <%= render 'layouts/header' %>
     <% if notice.present? %>
       <div class="notice">
         <p> <%= notice %> </p>
@@ -38,7 +21,7 @@
         <p> <%= alert %> </p>
       </div>
     <% end %>
-    <div class="container">
+    <div class="container position-n">
       <%= content_for?(:messages) ? yield(:messages): yield %>
     </div>
   </body>
