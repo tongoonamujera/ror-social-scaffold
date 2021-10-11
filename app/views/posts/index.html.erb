@@ -1,15 +1,22 @@
-<%= form_for(@post) do |form| %>
-  <%= form.label :content %>
-  <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
-  <%= display_errors(@post) %>
-  <%= form.submit 'Save', class: 'btn btn-primary' %>
-<% end %>
 
-  <article class="timeline">
-    <h3>
-      Recent posts
-    </h3>
-    <ul class="posts">
-      <%= render @timeline_posts %>
-    </ul>
-  </article>
+  <div class="columns is-centered">
+    <div class="column is-6">
+      <%= form_for(@post) do |form| %>
+        <%= form.label :content, class:"label" %>
+        <%= form.text_area :content, id: :post_content, class: 'inputs', placeholder: 'Add New Post' %>
+        <%= display_errors(@post) %>
+        <div class="has-text-right">
+          <%= form.submit 'Save', class: 'button is-success btnn has-text-right' %>
+        </div>
+      <% end %>
+
+        <article class="timeline">
+          <h3 class="has-text-centered">
+            <b>Recent posts</b>
+          </h3>
+          <ul class="posts">
+            <%= render @timeline_posts %>
+          </ul>
+        </article>
+    </div>
+  </div>
