@@ -179,6 +179,18 @@ body {
     background-color: aqua;
     z-index: 1000;
 
+    .links::after {
+      content: '';
+      display: block;
+      height: 5px;
+      background-color: azure;
+      transform: scale(0, 1);
+    }
+
+    .links:hover::after {
+      transform: scale(1);
+    }
+
     .checkbox,
     .checkbox-lab {
       display: none;
@@ -191,18 +203,6 @@ body {
       text-transform: uppercase;
       font-size: 17px;
       font-weight: 900;
-    }
-
-    .stay-in::after {
-      content: '';
-      display: block;
-      height: 5px;
-      background-color: azure;
-      transform: scale(0, 1);
-    }
-
-    .stay-in:hover::after {
-      transform: scale(1);
     }
 
     .mid-nav {

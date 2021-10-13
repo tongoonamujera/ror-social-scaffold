@@ -5,14 +5,8 @@
         <div class="box">
           <%= link_to user, class:"has-text-dark" do %>
             <div class="columns">
-              <div class="column has-text-centered is-2">
-                <span><i class="fas fa-user-circle fa-3x"></i></span>
-              </div>
-              <div class="column has-text-left is-3">
-                <span class="is-size-3"><%= user.name.capitalize %></span>
-              </div>
-              <div class="column has-text-right mt-5 is-6">
-                <i class="is-size-6">(click to send and see messages)</i>
+              <div class="column has-text-left is-12 is-8-mobile">
+                <span><span class="is-size-3"><%= user.name.capitalize %></span> <i class="is-size-6">(click to send and see messages)</i></span>
               </div>
             </div>
           <% end %>
