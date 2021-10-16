@@ -1,15 +1,15 @@
 <%= link_to "Go Back", messages_path, class:"button is-black mt-5"%>
-  <div class="columns my-5 is-centered">
-    <div class="column is-6 bodo has-background-light">
+  <div class="columns my-5 is-centered is-centered-mobile">
+    <div class="column is-6 is-12-mobile bodo has-background-light">
       <h1 class="has-text-centered my-2"><%= @user.name.capitalize %></h1>
       <% @sender_id = @user.id %>
       <% @messags = Message.where('sender_id =? AND receiver_id =? or receiver_id =? AND sender_id=?', current_user.id, @sender_id, current_user.id, @sender_id ).order(created_at: :asc) %>
       <% @messags.each do |message| %>
         <div class="columns">
           <% if message.sender_id == current_user.id %>
-            <div class="column">
+            <div class="column is-12-mobile">
               <div class="columns">
-                <div class="column is-6 bod has-background-warning">
+                <div class="column is-6 is-6-mobile  bod has-background-warning">
                   <span>Me:</span><br>
                   <b><i><%= message.created_at.strftime("%d %b %y @%H:%M:%S") %></i></b><br>
                   <%= message.body %> <br>
@@ -17,10 +17,10 @@
               </div>
             </div>
           <% else %>
-            <div class="column has-text-right">
-              <div class="columns">
-                <div class="column is-6"></div>
-                <div class="column is-6 bod has-background-white">
+            <div class="column is-12-mobile has-text-right">
+              <div class="columns is-flex">
+                <div class="column is-6 is-6-mobile"></div>
+                <div class="column is-6 is-6-mobile bod has-background-white">
                   <b><i class="has-background-light p-1"><%= message.created_at.strftime("%d %b %y  @%H:%M:%S") %></i></b><br>
                   <%= message.body %> <br>
                 </div>

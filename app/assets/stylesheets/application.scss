@@ -65,6 +65,16 @@ body {
   //   flex-direction: column;
   // }
 
+  .bodo {
+    border: 1px solid rgb(224, 220, 220);
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 2%;
+  }
+
   header {
     position: fixed;
     top: 0;
@@ -75,15 +85,27 @@ body {
     background-color: aqua;
     z-index: 1000;
 
+    .links::after {
+      content: '';
+      display: block;
+      height: 5px;
+      background-color: azure;
+      transform: scale(0, 1);
+    }
+
+    .links:hover::after {
+      transform: scale(1);
+    }
+
     .mid-nav {
       display: none;
       position: absolute;
       top: 100%;
       left: 0;
-      height: 70vh;
+      height: 90vh;
       background-color: aqua;
       z-index: 999;
-      width: 70vw;
+      width: 100vw;
 
       ul {
         display: flex;
@@ -160,7 +182,7 @@ body {
 
   .checkbox:checked ~ .mid-nav {
     display: block;
-    transform: scale(0.75);
+    transform: scale(1);
   }
 
   .checkbox {
@@ -224,6 +246,7 @@ body {
     .end-nav {
       margin-top: 15px;
       grid-column: 3 / span 1;
+      margin-left: 60%;
     }
   }
 
