@@ -1,0 +1,31 @@
+<header class="header">
+  <input type="checkbox" id="checkbox" class="checkbox">
+  <label for="checkbox" class="checkbox-lab">
+    <span></span>
+  </label>
+  <nav class="nav-start">
+    <ul>
+      <li><%= link_to 'Stay in touch', root_path, class:"has-text-dark links" %></li>
+    </ul>
+  </nav>
+  <nav class="mid-nav">
+    <ul>
+      <li class="has-text-dark">
+        <%= link_to 'Timeline', posts_path, class:"has-text-dark links" %>
+      </li>
+      <li>
+        <%= link_to 'All users', friendships_path, class:"has-text-dark links" %>
+      </li>
+      <li class="last">
+        <%= link_to 'Messages', messages_path, class:"has-text-dark links" %>
+      </li>
+    </ul>
+  </nav>
+  <nav class="end-nav">
+    <% if current_user %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"button is-light has-text-dark" %>
+    <% else %>
+      <%= link_to 'Sign in', user_session_path, class:"button is-light has-text-dark" %>
+    <% end %>
+  </nav>
+</header>
