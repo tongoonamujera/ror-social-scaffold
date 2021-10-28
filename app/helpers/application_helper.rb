@@ -13,15 +13,17 @@ module ApplicationHelper
     if like
       link_to post_like_path(id: like.id, post_id: post.id), method: :delete do
         content_tag(:span, class:"container") do
-          tag = content_tag(:span, "\u{1F44E}", class:"post-like")
           tag2 = content_tag(:span, "#{post.likes.size}", class:"post-counter")
-          (tag  + tag2 ).html_safe
+          tag = content_tag(:span, "\u{1F44E}", class:"post-like")
+          (tag2  + tag ).html_safe
         end
       end
     else
       link_to post_likes_path(post_id: post.id), method: :post do
-        content_tag :span do
-          content_tag(:span, "\u{1F44D} #{post.likes.count} ", class:"post-like")
+        content_tag(:span, class:"container") do
+          tag3 = content_tag(:span, "#{post.likes.count}", class:"post-counter")
+          tag1 = content_tag(:span, "\u{1F44D}", class:"post-like")
+          (tag3 +tag1).html_safe
         end
       end
     end
