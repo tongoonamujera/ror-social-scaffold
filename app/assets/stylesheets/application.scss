@@ -193,8 +193,8 @@ body {
 }
 
 a {
-  width: 4rem;
-  height: 2rem;
+  width: 2rem;
+  height: 1.6rem;
   margin: 0 0 0 5px;
   padding: 0;
 }
@@ -211,19 +211,24 @@ a > span .post-like {
   top: 0;
   width: inherit;
   z-index: -1;
-  font-size: 2.1rem;
+  font-size: 1.5rem;
 }
 
 a > span > .post-counter {
   position: absolute;
   left: 0;
-  top: 0;
-  width: inherit;
+  bottom: 0;
+  width: 1.5rem;
+  height: 1.5rem;
   z-index: 1;
-  background-color: rgb(126, 118, 118) !important;
-  color: rgb(43, 40, 40);
-  border-radius: 50%;
+  color: rgb(61, 5, 58);
+  background-color: rgba(116, 115, 16, 0.3);
+  border-radius: 40%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 
 @media screen and (min-width: 826px) {
