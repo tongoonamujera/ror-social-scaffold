@@ -11,9 +11,19 @@ module ApplicationHelper
   def like_or_dislike_btn(post)
     like = Like.find_by(post: post, user: current_user)
     if like
-      link_to('Dislike!', post_like_path(id: like.id, post_id: post.id), method: :delete)
+      link_to post_like_path(id: like.id, post_id: post.id), method: :delete do
+        content_tag(:span, class:"container") do
+          tag = content_tag(:span, "\u{1F44E}", class:"post-like")
+          tag2 = content_tag(:span, "#{post.likes.size}", class:"post-counter")
+          (tag  + tag2 ).html_safe
+        end
+      end
     else
-      link_to('Like!', post_likes_path(post_id: post.id), method: :post)
+      link_to post_likes_path(post_id: post.id), method: :post do
+        content_tag :span do
+          content_tag(:span, "\u{1F44D} #{post.likes.count} ", class:"post-like")
+        end
+      end
     end
   end
 
