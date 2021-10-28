@@ -33,6 +33,8 @@
 
 .post-liking {
   border-bottom: 1px solid rgb(223, 221, 221);
+  display: flex;
+  padding-bottom: 1rem;
 }
 
 .inputs {
@@ -188,6 +190,45 @@ body {
   .checkbox {
     display: none;
   }
+}
+
+a {
+  width: 2rem;
+  height: 1.6rem;
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+
+a > .container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+a > span .post-like {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: inherit;
+  z-index: -1;
+  font-size: 1.5rem;
+}
+
+a > span > .post-counter {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  z-index: 1;
+  color: rgb(61, 5, 58);
+  background-color: rgba(116, 115, 16, 0.3);
+  border-radius: 40%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 
 @media screen and (min-width: 826px) {
